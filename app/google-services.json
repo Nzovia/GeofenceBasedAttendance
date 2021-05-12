@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "108624146229",
+    "project_id": "geofencebasedattendance",
+    "storage_bucket": "geofencebasedattendance.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:108624146229:android:3cb2a54e11ab21e5d4267c",
+        "android_client_info": {
+          "package_name": "com.nicholas.geofencebasedattendance"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "108624146229-vdgc3o32kf67l7300ricr4ekqfvmcmg3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB71r8FSOQG8nb_gGaApiULuCwcbCLIsmA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "108624146229-vdgc3o32kf67l7300ricr4ekqfvmcmg3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

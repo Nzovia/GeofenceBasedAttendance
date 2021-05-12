@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">GeofenceBasedAttendance</string>
+    <string name="work_smart_skills_matters">Work Smart, Skills Matters</string>
+    <string name="not_register">not_register</string>
+    <string name="register">register</string>
+    <string name="prompt_password">prompt_password</string>
+    <string name="phone_number">phone_number</string>
+    <string name="prompt_email">prompt_email</string>
+    <string name="name">name</string>
+    <string name="forgot_password">forgot_password</string>
+    <string name="login">login</string>
+    <string name="work_smart_skills_matter">work_smart_skills_matter</string>
+    <string name="nicholas_nzovia_maundu">Nicholas Nzovia Maundu</string>
+    <string name="todo">TODO</string>
+    <string name="activities">Activities</string>
+    <string name="tasks">Tasks</string>
+    <string name="lecturer">Lecturer</string>
+    <string name="student">Student</string>
+    <string name="remember_each_experience">remember_each_experience</string>
+    <string name="student_email">student email</string>
+    <string name="student_number">Student Number</string>
+    <string name="full_name">Full Name</string>
+    <string name="student_course">Student Course</string>
+    <string name="university">University</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="view_students">View Students</string>
+    <string name="students">Students</string>
+    <string name="create_fence">Create Fence</string>
+    <string name="email">Email</string>
+    <string name="title_activity_geo_fence">Map</string>
+</resources>
