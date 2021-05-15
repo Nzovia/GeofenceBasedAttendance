@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.nicholas.geofencebasedattendance.R;
 
-public class GeoFence extends AppCompatActivity {
+public class Attendance extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_geo_fence);
+        setContentView(R.layout.activity_attendance);
     }
 }

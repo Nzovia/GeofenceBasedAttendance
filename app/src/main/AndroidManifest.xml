@@ -17,7 +17,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GeofenceBasedAttendance">
-        <activity android:name=".lecturer.GeoFence"></activity>
+        <activity android:name=".lecturer.ChatsActivity"></activity>
+        <activity android:name=".lecturer.Attendance" />
+
+        <service android:name=".lecturer.GeofenceTransitionService" />
+
+        <activity android:name=".lecturer.MainActivity">
+            <meta-data
+                android:name="com.google.android.gms.version"
+                android:value="@integer/google_play_services_version" />
+        </activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -28,7 +37,7 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
+            android:value="AIzaSyD0_IUIP3RQ-I2xdrliW6ys1yTgmG5-iEo" />
 
         <activity android:name=".Student.AttendClass" />
         <activity android:name=".Student.RegisterStudent" />
@@ -38,7 +47,7 @@
         <activity android:name=".lecturer.LecturerDashboard" />
         <activity android:name=".Student.StudentDashboard" />
         <activity android:name=".LoginAcivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

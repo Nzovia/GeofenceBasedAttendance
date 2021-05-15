@@ -1,52 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/card_Color"
-    tools:context=".MainActivity">
+    android:orientation="horizontal"
+    tools:context=".lecturer.MainActivity">
 
-    <ImageView
-        android:id="@+id/welcomeTop"
-        android:layout_width="150dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="208dp"
-        android:contentDescription="@string/todo"
-        android:src="@drawable/attendclass"
-        app:layout_constraintHorizontal_bias="0.532"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        />
 
-    <ImageView
-        android:id="@+id/welcomeBottom"
-        android:layout_width="170dp"
-        android:layout_height="200dp"
-        android:layout_marginBottom="248dp"
-        android:contentDescription="@string/todo"
-        android:src="@drawable/activities"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.539"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/mylatlog"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="224dp"
-        android:fontFamily="sans-serif-condensed"
-        android:text="work_smart_skills_matters"
-        android:textColor="@color/color_primary"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.573"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/welcomeBottom"
-        app:layout_constraintVertical_bias="0.571" />
+        android:orientation="horizontal"
+        android:layout_below="@id/my_toolbar"
+        android:background="@color/color_primary_dark"
+        android:paddingTop="5dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="5dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lat"
+            android:textColor="@color/card_Color"
+            android:layout_weight="0.5"
+            android:text="Lat:"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lon"
+            android:textColor="@color/card_Color"
+            android:layout_weight="0.5"
+            android:text="Long:"
+            />
+
+    </LinearLayout>
+    <!-- <com.google.android.gms.maps.MapView
+        android:id="@+id/mapView"
+        android:layout_width="match_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/mylatlog" />-->
+
+   <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_below="@id/mylatlog"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+       android:name="com.google.android.gms.maps.MapFragment"
+        android:id="@+id/maps" />
+    <!--class="com.google.android.gms.maps.SupportMapFragment"-->
+
+</RelativeLayout>

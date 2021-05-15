@@ -11,7 +11,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class WelcomeActivity extends AppCompatActivity {
     private static int SPLASH_SCREEN=5000;
     Handler handler;
     Animation topanim,bottomanim;
@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_welcome);
 
         //animations
         topanim= AnimationUtils.loadAnimation(this,R.anim.top_anim);
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent=new Intent(MainActivity.this,ChoiceActivity.class);
+                Intent intent=new Intent(WelcomeActivity.this,ChoiceActivity.class);
                 startActivity(intent);
                 finish();
             }
