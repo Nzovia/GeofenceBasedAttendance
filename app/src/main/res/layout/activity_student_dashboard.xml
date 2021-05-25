@@ -73,6 +73,7 @@
 
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/attendclass"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
@@ -109,6 +110,7 @@
 
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
+            android:id="@+id/studentActivities"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"

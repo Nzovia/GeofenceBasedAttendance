@@ -17,7 +17,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
-import com.nicholas.geofencebasedattendance.LoginAcivity;
+import com.nicholas.geofencebasedattendance.LoginActivity;
 import com.nicholas.geofencebasedattendance.R;
 
 public class RegisterStudent extends AppCompatActivity {
@@ -125,7 +125,7 @@ public class RegisterStudent extends AppCompatActivity {
                                     if (task.isSuccessful()) {
                                         Toast.makeText(RegisterStudent.this, "registration successful", Toast.LENGTH_LONG).show();
                                         progressbar.setVisibility(View.GONE);
-                                        Intent intent = new Intent(RegisterStudent.this, LoginAcivity.class);
+                                        Intent intent = new Intent(RegisterStudent.this, LoginActivity.class);
                                         startActivity(intent);
                                     } else {
                                         Toast.makeText(RegisterStudent.this, "registration failed", Toast.LENGTH_LONG).show();

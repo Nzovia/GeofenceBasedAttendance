@@ -17,7 +17,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GeofenceBasedAttendance">
-        <activity android:name=".lecturer.ChatsActivity"></activity>
+        <activity android:name=".lecturer.LecturerActivities"></activity>
+        <activity android:name=".Student.StudentActivities" />
+        <activity android:name=".Student.HistoryFences" />
+        <activity android:name=".lecturer.LecturerLogin" />
+        <activity android:name=".lecturer.RegisterLecturer" />
+        <activity android:name=".lecturer.ChatsActivity" />
         <activity android:name=".lecturer.Attendance" />
 
         <service android:name=".lecturer.GeofenceTransitionService" />
@@ -46,7 +51,7 @@
         <activity android:name=".ChoiceActivity" />
         <activity android:name=".lecturer.LecturerDashboard" />
         <activity android:name=".Student.StudentDashboard" />
-        <activity android:name=".LoginAcivity" />
+        <activity android:name=".LoginActivity" />
         <activity android:name=".WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

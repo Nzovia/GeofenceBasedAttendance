@@ -8,25 +8,41 @@
     android:background="@color/card_Color"
     tools:context=".lecturer.RegisteredStudents">
 
-    <Button
+    <TextView
         android:id="@+id/viewstudents"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
-        android:text="@string/view_students"
+        android:layout_marginTop="10dp"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:textColor="@color/color_primary"
+        android:text="Registered Students"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchItem"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintTop_toBottomOf="@id/viewstudents"
+        android:background="@drawable/round_background"
+        android:backgroundTint="@color/layouts"
+        tools:layout_editor_absoluteX="10dp"
+        tools:layout_editor_absoluteY="31dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/studentslist"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewstudents"
         app:layout_constraintVertical_bias="0.0"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="100dp"
         android:layout_marginBottom="20dp"
         android:background="#C3D3CB"
         />

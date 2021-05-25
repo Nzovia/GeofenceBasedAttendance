@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -44,6 +45,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.nicholas.geofencebasedattendance.R;
+import com.nicholas.geofencebasedattendance.Student.AttendClass;
+import com.nicholas.geofencebasedattendance.Student.StudentDashboard;
 
 public class MainActivity extends AppCompatActivity
         implements
@@ -133,10 +136,19 @@ public class MainActivity extends AppCompatActivity
         switch ( item.getItemId() ) {
             case R.id.geofence: {
                 startGeofence();
+                Toast.makeText(getApplicationContext(),"Fence Created",Toast.LENGTH_LONG).show();
+
+                String longitude=textLong.getText().toString().trim();
+                String latitude=textLat.getText().toString().trim();
+                Intent intent=new Intent(getApplicationContext(), AttendClass.class);
+                intent.putExtra("longitude",longitude);
+                intent.putExtra("latitude",latitude);
+                startActivity(intent);
                 return true;
             }
             case R.id.clear: {
                 clearGeofence();
+                Toast.makeText(getApplicationContext(),"Fence Destroyed",Toast.LENGTH_LONG).show();
                 return true;
             }
         }
@@ -322,7 +334,7 @@ public class MainActivity extends AppCompatActivity
         // Define marker options
         MarkerOptions markerOptions = new MarkerOptions()
                 .position(latLng)
-                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE))
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))
                 .title(title);
         if ( map!=null ) {
             // Remove last geoFenceMarker
@@ -348,7 +360,7 @@ public class MainActivity extends AppCompatActivity
 
     private static final long GEO_DURATION = 60 * 60 * 1000;
     private static final String GEOFENCE_REQ_ID = "My Geofence";
-    private static final float GEOFENCE_RADIUS = 20.0f; // in meters
+    private static final float GEOFENCE_RADIUS = 100.0f; // in meters
 
     // Create a Geofence
     private Geofence createGeofence( LatLng latLng, float radius ) {

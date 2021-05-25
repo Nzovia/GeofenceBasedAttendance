@@ -22,7 +22,7 @@
         android:id="@+id/profile"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        app:srcCompat="@drawable/profile"
+        app:srcCompat="@drawable/lecturer"
         tools:layout_editor_absoluteX="38dp"
         tools:layout_editor_absoluteY="16dp"
         android:layout_marginTop="16dp"
@@ -37,7 +37,7 @@
         android:id="@+id/studentname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/nicholas_nzovia_maundu"
+        android:text="@string/lecturer_dashboard"
         android:textSize="20sp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@id/profile"
@@ -52,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="92dp"
         android:layout_marginTop="16dp"
-        android:text="@string/student"
+        android:text="@string/staff"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@id/profile"
         app:layout_constraintTop_toBottomOf="@id/studentname" />
@@ -133,7 +133,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="96dp"
-                    android:src="@drawable/activities"
+                    android:src="@drawable/fence"
                     android:scaleType="fitXY"
                     android:layout_gravity="center_horizontal"/>
                 <TextView
@@ -150,7 +150,7 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/lecCard3"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="50dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             app:cardBackgroundColor="@color/card_Color"
@@ -171,12 +171,12 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="96dp"
-                    android:src="@drawable/history"
+                    android:src="@drawable/studentattendance"
                     android:layout_gravity="center_horizontal"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="History"
+                    android:text="@string/attendance"
                     android:textSize="16sp"
                     android:textColor="#000000"
                     android:textStyle="bold" />
@@ -184,7 +184,7 @@
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
-        <androidx.cardview.widget.CardView
+        <!--<androidx.cardview.widget.CardView
             android:id="@+id/lecCard4"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -220,7 +220,7 @@
 
             </LinearLayout>
 
-        </androidx.cardview.widget.CardView>
+        </androidx.cardview.widget.CardView>-->
         <androidx.cardview.widget.CardView
             android:id="@+id/lecCard5"
             android:layout_width="0dp"
@@ -250,7 +250,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Learning"
+                    android:text="Activities"
                     android:textSize="16sp"
                     android:textColor="#000000"
                     android:textStyle="bold" />
@@ -258,7 +258,7 @@
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
-        <androidx.cardview.widget.CardView
+        <!--<androidx.cardview.widget.CardView
             android:id="@+id/lecCard6"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -294,7 +294,7 @@
 
             </LinearLayout>
 
-        </androidx.cardview.widget.CardView>
+        </androidx.cardview.widget.CardView>-->
 
 
     </GridLayout>

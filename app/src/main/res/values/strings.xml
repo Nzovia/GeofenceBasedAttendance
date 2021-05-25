@@ -1,4 +1,4 @@
-<resources>
+ <resources>
     <string name="app_name">GeofenceBasedAttendance</string>
     <string name="work_smart_skills_matters">Work Smart, Skills Matters</string>
     <string name="not_register">not_register</string>
@@ -28,4 +28,28 @@
     <string name="create_fence">Create Fence</string>
     <string name="email">Email</string>
     <string name="title_activity_geo_fence">Map</string>
+    <string name="check_attendance">Check Attendance</string>
+    <string name="communication_here">Communication Here</string>
+    <string name="attendance">Attendance</string>
+    <string name="already_registered">Already Registered</string>
+    <string name="staff_number">staff number</string>
+    <string name="institutional_email">Institutional email</string>
+    <string name="lecturer_dashboard">Lecturer Dashboard</string>
+    <string name="staff">STAFF</string>
+    <string name="longitutide">Longitutide :</string>
+    <string name="latitude">Latitude :</string>
+    <string name="valid_registration_number">Valid Registration number</string>
+    <string name="time_in">Time In</string>
+    <string name="attend">Attend</string>
+    <string name="leave">Leave</string>
+    <string name="title">Title:</string>
+    <string name="description">Description:</string>
+    <string name="date">Date:</string>
+    <string name="time">Time:</string>
+    <string name="comments">Comments:</string>
+    <string name="add">Add</string>
+    <string name="enter_comment">Enter Comment</string>
+    <string name="post_title">Post title</string>
+    <string name="post_description">post description</string>
+
 </resources>

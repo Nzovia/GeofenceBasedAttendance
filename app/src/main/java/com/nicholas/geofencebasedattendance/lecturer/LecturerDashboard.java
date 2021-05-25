@@ -23,16 +23,16 @@ public class LecturerDashboard extends AppCompatActivity implements View.OnClick
         card1 = findViewById(R.id.lecCard1);
         card2 = findViewById(R.id.lecCard2);
         card3 = findViewById(R.id.lecCard3);
-        card4 = findViewById(R.id.lecCard4);
+        //card4 = findViewById(R.id.lecCard4);
         card5 = findViewById(R.id.lecCard5);
-        card6 = findViewById(R.id.lecCard6);
+        //card6 = findViewById(R.id.lecCard6);
 
         card1.setOnClickListener(this);
         card2.setOnClickListener(this);
         card3.setOnClickListener(this);
-        card4.setOnClickListener(this);
+        //card4.setOnClickListener(this);
         card5.setOnClickListener(this);
-        card6.setOnClickListener(this);
+        //card6.setOnClickListener(this);
 
     }
 
@@ -49,17 +49,17 @@ public class LecturerDashboard extends AppCompatActivity implements View.OnClick
                 startActivity(i);
                 break;
             case R.id.lecCard3:
-                Intent j = new Intent(LecturerDashboard.this, Attendance.class);
+                Intent j = new Intent(LecturerDashboard.this, CheckAttendance.class);
                 startActivity(j);
                 break;
-            case R.id.lecCard4:
-                Intent k = new Intent(LecturerDashboard.this, ChatsActivity.class);
-                startActivity(k);
-                break;
-//            case R.id.lecCard5:
-//                Intent l = new Intent(LecturerDashboard.this, RegisteredStudents.class);
-//                startActivity(l);
+//            case R.id.lecCard4:
+//                Intent k = new Intent(LecturerDashboard.this, ChatsActivity.class);
+//                startActivity(k);
 //                break;
+            case R.id.lecCard5:
+                Intent l = new Intent(LecturerDashboard.this, LecturerActivities.class);
+                startActivity(l);
+                break;
 //            case R.id.lecCard6:
 //                Intent m= new Intent(LecturerDashboard.this, RegisteredStudents.class);
 //                startActivity(m);
