@@ -51,5 +51,9 @@
     <string name="enter_comment">Enter Comment</string>
     <string name="post_title">Post title</string>
     <string name="post_description">post description</string>
+     <string name="search_here">search here</string>
+     <string name="enter_unit_name">Enter Unit Name</string>
+     <string name="enter_unit_code">Enter Unit Code</string>
+     <string name="geofence_data">GeoFence Data</string>
 
-</resources>
+ </resources>

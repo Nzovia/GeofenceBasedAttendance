@@ -12,5 +12,8 @@ public class StudentActivities extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_activities);
+
+        //create an object for the students activities viewHolder
+
     }
 }

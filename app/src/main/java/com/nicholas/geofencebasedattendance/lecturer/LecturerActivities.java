@@ -59,6 +59,20 @@ public class LecturerActivities extends AppCompatActivity {
             protected void onBindViewHolder(@NonNull activitiesViewholder myholder, int position, @NonNull activitiesModel model) {
 
 
+                myholder.editbtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                       updatePost(model.getId(),model.getTitle(),model.getDescription(),model.getTime(),model.getComment());
+
+                    }
+                });
+                myholder.deletebtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        myDB.child(model.getId()).removeValue();
+                        Toast.makeText(getApplicationContext(),"post deleted", Toast.LENGTH_LONG).show();
+                    }
+                });
                 myholder.title.setText(model.getTitle());
                 myholder.description.setText(model.getDescription());
                 myholder.time.setText(model.getTime());
@@ -75,6 +89,7 @@ public class LecturerActivities extends AppCompatActivity {
         myadapter.startListening();
         recyclerView.setAdapter(myadapter);
     }
+
 
     private void showDialog() {
         AlertDialog.Builder builder=new AlertDialog.Builder(this);
@@ -133,4 +148,62 @@ public class LecturerActivities extends AppCompatActivity {
         });
         dialog.show();
     }
+    //the followng function tells the app to start fetching data from the database
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+    //update the post by the lecturer
+    private void updatePost(String id, String title, String description, String time, String comment) {
+        android.app.AlertDialog.Builder mydialog = new android.app.AlertDialog.Builder(LecturerActivities.this);
+        LayoutInflater inflater = LayoutInflater.from(LecturerActivities.this);
+        View mview = inflater.inflate(R.layout.activitiesdialog,null);
+        final android.app.AlertDialog dialog = mydialog.create();
+        dialog.setView(mview);
+
+        // hooks to the dialog widgets
+        final EditText titlePost =  mview.findViewById(R.id.titleText);
+        final EditText descriptionPost = mview.findViewById(R.id.descriptionText);
+        final EditText timePost =  mview.findViewById(R.id.timeText);
+        final EditText commentPost = mview.findViewById(R.id.commentText);
+        Button update = mview.findViewById(R.id.addPost);
+        update.setText("UPDATE");
+        ImageButton close=mview.findViewById(R.id.closePost);
+
+
+
+        titlePost.setText(title);
+        descriptionPost.setText(description);
+        timePost.setText(time);
+        commentPost.setText(comment);
+        update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                activitiesModel model = new activitiesModel(id,titlePost.getText().toString(),descriptionPost.getText().toString(),
+                        timePost.getText().toString(),commentPost.getText().toString().toString());
+                myDB.child(id).setValue(model);
+                dialog.dismiss();
+
+                Toast.makeText(getApplicationContext(),"post updated", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        dialog.show();
+
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+
+            }
+        });
+    }
+
 }

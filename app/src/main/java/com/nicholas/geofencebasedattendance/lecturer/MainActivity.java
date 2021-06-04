@@ -10,14 +10,17 @@ import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
@@ -86,7 +89,6 @@ public class MainActivity extends AppCompatActivity
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
         getSupportActionBar().setTitle("Geofence");
-        //myToolbar.setTitle("Geofence");
         myToolbar.inflateMenu(R.menu.main_menu);
 
         // initialize GoogleMaps
@@ -135,15 +137,19 @@ public class MainActivity extends AppCompatActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         switch ( item.getItemId() ) {
             case R.id.geofence: {
+
+//                if (getLastKnownLocation()==!null){
+//
+//                }
                 startGeofence();
                 Toast.makeText(getApplicationContext(),"Fence Created",Toast.LENGTH_LONG).show();
-
-                String longitude=textLong.getText().toString().trim();
-                String latitude=textLat.getText().toString().trim();
-                Intent intent=new Intent(getApplicationContext(), AttendClass.class);
-                intent.putExtra("longitude",longitude);
-                intent.putExtra("latitude",latitude);
-                startActivity(intent);
+                geofenceDialog( );
+//                String longitude=textLong.getText().toString().trim();
+//                String latitude=textLat.getText().toString().trim();
+//                Intent intent=new Intent(getApplicationContext(), AttendClass.class);
+//                intent.putExtra("longitude",longitude);
+//                intent.putExtra("latitude",latitude);
+//                startActivity(intent);
                 return true;
             }
             case R.id.clear: {
@@ -153,6 +159,14 @@ public class MainActivity extends AppCompatActivity
             }
         }
         return super.onOptionsItemSelected(item);
+    }
+  //show the geofence dialog
+    private void geofenceDialog() {
+        AlertDialog.Builder builder=new AlertDialog.Builder(this);
+        View view= LayoutInflater.from(this).inflate(R.layout.geofencedialog,null);
+        builder.setView(view);
+        builder.create().show();
+
     }
 
     private final int REQ_PERMISSION = 999;
@@ -225,7 +239,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onMapClick(LatLng latLng) {
         Log.d(TAG, "onMapClick("+latLng +")");
-        markerForGeofence(latLng);
+       // markerForGeofence(latLng);
     }
 
     @Override
@@ -320,37 +334,38 @@ public class MainActivity extends AppCompatActivity
             if ( locationMarker != null )
                 locationMarker.remove();
             locationMarker = map.addMarker(markerOptions);
-            float zoom = 14f;
+            float zoom = 16f;
             CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, zoom);
             map.animateCamera(cameraUpdate);
         }
     }
 
-
-    private Marker geoFenceMarker;
-    private void markerForGeofence(LatLng latLng) {
-        Log.i(TAG, "markerForGeofence("+latLng+")");
-        String title = latLng.latitude + ", " + latLng.longitude;
-        // Define marker options
-        MarkerOptions markerOptions = new MarkerOptions()
-                .position(latLng)
-                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))
-                .title(title);
-        if ( map!=null ) {
-            // Remove last geoFenceMarker
-            if (geoFenceMarker != null)
-                geoFenceMarker.remove();
-
-            geoFenceMarker = map.addMarker(markerOptions);
-
-        }
-    }
+//
+//    private Marker geoFenceMarker;
+//    private void markerForGeofence(LatLng latLng) {
+//        Log.i(TAG, "markerForGeofence("+latLng+")");
+//        String title = latLng.latitude + ", " + latLng.longitude;
+//        // Define marker options
+//        //drawGeofence();
+//        MarkerOptions markerOptions = new MarkerOptions()
+//                .position(latLng)
+//                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))
+//                .title(title);
+//        if ( map!=null ) {
+//            // Remove last geoFenceMarker
+//            if (geoFenceMarker != null)
+//                geoFenceMarker.remove();
+//
+//            geoFenceMarker = map.addMarker(markerOptions);
+//
+//        }
+//    }
 
     // Start Geofence creation process
     private void startGeofence() {
         Log.i(TAG, "startGeofence()");
-        if( geoFenceMarker != null ) {
-            Geofence geofence = createGeofence( geoFenceMarker.getPosition(), GEOFENCE_RADIUS );
+        if( locationMarker != null ) {
+            Geofence geofence = createGeofence( locationMarker.getPosition(), GEOFENCE_RADIUS );
             GeofencingRequest geofenceRequest = createGeofenceRequest( geofence );
             addGeofence( geofenceRequest );
         } else {
@@ -426,9 +441,9 @@ public class MainActivity extends AppCompatActivity
             geoFenceLimits.remove();
 
         CircleOptions circleOptions = new CircleOptions()
-                .center( geoFenceMarker.getPosition())
-                .strokeColor(Color.argb(50, 70,70,70))
-                .fillColor( Color.argb(100, 150,150,150) )
+                .center( locationMarker.getPosition())
+                .strokeColor(Color.argb(255, 255,0,0))
+                .fillColor( Color.argb(64, 255,0,0) )
                 .radius( GEOFENCE_RADIUS );
         geoFenceLimits = map.addCircle( circleOptions );
     }
@@ -442,8 +457,8 @@ public class MainActivity extends AppCompatActivity
         SharedPreferences sharedPref = getPreferences( Context.MODE_PRIVATE );
         SharedPreferences.Editor editor = sharedPref.edit();
 
-        editor.putLong( KEY_GEOFENCE_LAT, Double.doubleToRawLongBits( geoFenceMarker.getPosition().latitude ));
-        editor.putLong( KEY_GEOFENCE_LON, Double.doubleToRawLongBits( geoFenceMarker.getPosition().longitude ));
+        editor.putLong( KEY_GEOFENCE_LAT, Double.doubleToRawLongBits( locationMarker.getPosition().latitude ));
+        editor.putLong( KEY_GEOFENCE_LON, Double.doubleToRawLongBits( locationMarker.getPosition().longitude ));
         editor.apply();
     }
 
@@ -456,8 +471,8 @@ public class MainActivity extends AppCompatActivity
             double lat = Double.longBitsToDouble( sharedPref.getLong( KEY_GEOFENCE_LAT, -1 ));
             double lon = Double.longBitsToDouble( sharedPref.getLong( KEY_GEOFENCE_LON, -1 ));
             LatLng latLng = new LatLng( lat, lon );
-            markerForGeofence(latLng);
-            drawGeofence();
+           // markerForGeofence(latLng);
+            //drawGeofence();
         }
     }
 
@@ -480,8 +495,8 @@ public class MainActivity extends AppCompatActivity
 
     private void removeGeofenceDraw() {
         Log.d(TAG, "removeGeofenceDraw()");
-        if ( geoFenceMarker != null)
-            geoFenceMarker.remove();
+        if ( locationMarker != null)
+            locationMarker.remove();
         if ( geoFenceLimits != null )
             geoFenceLimits.remove();
     }

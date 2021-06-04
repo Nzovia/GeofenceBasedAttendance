@@ -32,7 +32,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginRight="10dp"
             android:layout_centerHorizontal="true"
-            android:background="@color/layouts"
+            android:background="@android:color/transparent"
             android:src="@drawable/ic_close"
             />
     </RelativeLayout>
