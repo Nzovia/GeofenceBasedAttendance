@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.location.Address;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,6 +16,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -69,6 +72,7 @@ public class MainActivity extends AppCompatActivity
 
     private TextView textLat, textLong;
 
+
     private MapFragment mapFragment;
 
     private static final String NOTIFICATION_MSG = "NOTIFICATION MSG";
@@ -85,7 +89,6 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         textLat = (TextView) findViewById(R.id.lat);
         textLong = (TextView) findViewById(R.id.lon);
-
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
         getSupportActionBar().setTitle("Geofence");
@@ -137,19 +140,8 @@ public class MainActivity extends AppCompatActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         switch ( item.getItemId() ) {
             case R.id.geofence: {
-
-//                if (getLastKnownLocation()==!null){
-//
-//                }
                 startGeofence();
                 Toast.makeText(getApplicationContext(),"Fence Created",Toast.LENGTH_LONG).show();
-                geofenceDialog( );
-//                String longitude=textLong.getText().toString().trim();
-//                String latitude=textLat.getText().toString().trim();
-//                Intent intent=new Intent(getApplicationContext(), AttendClass.class);
-//                intent.putExtra("longitude",longitude);
-//                intent.putExtra("latitude",latitude);
-//                startActivity(intent);
                 return true;
             }
             case R.id.clear: {
@@ -157,16 +149,17 @@ public class MainActivity extends AppCompatActivity
                 Toast.makeText(getApplicationContext(),"Fence Destroyed",Toast.LENGTH_LONG).show();
                 return true;
             }
+            case R.id.sharegeofence:{
+                String longitude=textLong.getText().toString().trim();
+                String latitude=textLat.getText().toString().trim();
+                Intent intent=new Intent(getApplicationContext(), ShareFence.class);
+                intent.putExtra("longitude",longitude);
+                intent.putExtra("latitude",latitude);
+                startActivity(intent);
+
+            }
         }
         return super.onOptionsItemSelected(item);
-    }
-  //show the geofence dialog
-    private void geofenceDialog() {
-        AlertDialog.Builder builder=new AlertDialog.Builder(this);
-        View view= LayoutInflater.from(this).inflate(R.layout.geofencedialog,null);
-        builder.setView(view);
-        builder.create().show();
-
     }
 
     private final int REQ_PERMISSION = 999;

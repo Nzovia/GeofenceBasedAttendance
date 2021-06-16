@@ -25,13 +25,6 @@ public class AttendClass extends AppCompatActivity {
         textViewlatitude=findViewById(R.id.displaylatitude);
         attendClass=findViewById(R.id.buttonAttend);
 
-        //getting Intent
-        Intent intent=getIntent();
-        String longitude=intent.getStringExtra("longitude");
-        textViewlongitude.setText(longitude);
-        String latitude=intent.getStringExtra("latitude");
-        textViewlatitude.setText(latitude);
-
 
         //onclick method for the button
         attendClass.setOnClickListener(v -> showDialog());
