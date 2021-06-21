@@ -7,10 +7,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.nicholas.geofencebasedattendance.R;
 import com.nicholas.geofencebasedattendance.moreDataModels.FenceData;
@@ -21,15 +23,16 @@ public class ShareFence extends AppCompatActivity {
     private Button sharedata;
     private FirebaseAuth mAuth;
 
-    FirebaseDatabase firebaseDatabase;
+    DatabaseReference myDB;
+   // FirebaseDatabase firebaseDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_share_fence);
 
-        passedLat=findViewById(R.id.lattext);
-        passedLong=findViewById(R.id.longitudetext);
+        passedLat=findViewById(R.id.latText);
+        passedLong=findViewById(R.id.longitudeText);
         unitName=findViewById(R.id.unitname);
         unitCode=findViewById(R.id.unitcode);
         sharedata=findViewById(R.id.sharefence);
@@ -43,9 +46,8 @@ public class ShareFence extends AppCompatActivity {
 
         //firebase connection
         //getting instance of the firebase
-        firebaseDatabase = FirebaseDatabase.getInstance();
         mAuth = FirebaseAuth.getInstance();
-
+        myDB = FirebaseDatabase.getInstance().getReference().child("ClassFences").child( mAuth.getCurrentUser().getUid());
         sharedata.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,6 +60,7 @@ public class ShareFence extends AppCompatActivity {
     private void shareFenceData() {
         //this method helps you get data from both textView
         // and EditText in the sharedata XML
+        String id=myDB.push().getKey();
         String latitude = passedLat.getText().toString().trim();
         String longitude = passedLong.getText().toString().trim();
         String unitname = unitName.getText().toString().trim();
@@ -76,9 +79,15 @@ public class ShareFence extends AppCompatActivity {
         }
 
         //create an object that fetchs data from the fence model/ fenceData
-        FenceData fenceData = new FenceData(latitude,longitude,unitname,unitcode);
-
+        FenceData fenceData = new FenceData(id,latitude,longitude,unitname,unitcode);
         //now call the firebase object
+        myDB.child(id).setValue(fenceData).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Toast.makeText(getApplicationContext(), "fence shared successfully", Toast.LENGTH_SHORT).show();
+            }
+
+        });
 
     }
 }

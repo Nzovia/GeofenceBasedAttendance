@@ -44,6 +44,9 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyD0_IUIP3RQ-I2xdrliW6ys1yTgmG5-iEo" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
 
         <activity android:name=".Student.AttendClass" />
         <activity android:name=".Student.RegisterStudent" />
