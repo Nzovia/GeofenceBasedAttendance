@@ -43,8 +43,6 @@ public class RegisteredStudents extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         // calling a method to get data from
         // Firebase and set data to list view
-
-
         myDB = FirebaseDatabase.getInstance().getReference("myDB");
 
         LoadData("");

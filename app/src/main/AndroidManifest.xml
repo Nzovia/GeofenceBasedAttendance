@@ -17,7 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GeofenceBasedAttendance">
-        <activity android:name=".lecturer.ShareFence"></activity>
+        <activity android:name=".lecturer.FenceHistory"></activity>
+        <activity android:name=".lecturer.ShareFence" />
         <activity android:name=".lecturer.LecturerActivities" />
         <activity android:name=".Student.StudentActivities" />
         <activity android:name=".Student.HistoryFences" />

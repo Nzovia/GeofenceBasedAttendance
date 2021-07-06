@@ -1,7 +1,8 @@
 package com.nicholas.geofencebasedattendance.Student;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,30 +11,52 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.nicholas.geofencebasedattendance.R;
+import com.nicholas.geofencebasedattendance.lecturer.FencesAdapter;
+import com.nicholas.geofencebasedattendance.lecturer.FencesData;
+
 
 public class AttendClass extends AppCompatActivity {
-    private TextView textViewlongitude, textViewlatitude;
-    private Button attendClass;
-
+    RecyclerView attendanceLinks;
+    DatabaseReference myDB;
+    FencesAdapter fenceAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attend_class);
 
-        textViewlongitude=findViewById(R.id.displaylongititude);
-        textViewlatitude=findViewById(R.id.displaylatitude);
-        attendClass=findViewById(R.id.buttonAttend);
+       //create an instance of the database being referenced from
+        attendanceLinks = findViewById(R.id.attendanceDataRecycler);
+        //set the recyclerview linearly
+        attendanceLinks.setLayoutManager(new LinearLayoutManager(this));
 
+        myDB = FirebaseDatabase.getInstance().getReference().child("ClassFences");
 
-        //onclick method for the button
-        attendClass.setOnClickListener(v -> showDialog());
+        // query in the database to fetch appropriate data
+        FirebaseRecyclerOptions<FencesData> options
+                = new FirebaseRecyclerOptions.Builder<FencesData>()
+                .setQuery(myDB, FencesData.class)  // .setQuery(myDB, studentItem.class)
+                .build();
+        // Connecting object of required Adapter class to
+        // the Adapter class itself
+        fenceAdapter = new FencesAdapter(options);
+        // Connecting Adapter class with the Recycler view*/
+        attendanceLinks.setAdapter(fenceAdapter);
     }
 
-    private void showDialog() {
-        AlertDialog.Builder builder=new AlertDialog.Builder(this);
-        View view= LayoutInflater.from(this).inflate(R.layout.authenticate_attendance,null);
-        builder.setView(view);
-        builder.create().show();
+
+    @Override
+    protected void onStart() {
+        fenceAdapter.startListening();
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        fenceAdapter.stopListening();
     }
 }

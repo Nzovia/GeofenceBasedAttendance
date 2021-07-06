@@ -15,7 +15,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.nicholas.geofencebasedattendance.R;
-import com.nicholas.geofencebasedattendance.moreDataModels.FenceData;
 
 public class ShareFence extends AppCompatActivity {
     private TextView passedLat, passedLong;
@@ -23,7 +22,7 @@ public class ShareFence extends AppCompatActivity {
     private Button sharedata;
     private FirebaseAuth mAuth;
 
-    DatabaseReference myDB;
+    DatabaseReference mydatabases;
    // FirebaseDatabase firebaseDatabase;
 
     @Override
@@ -47,7 +46,7 @@ public class ShareFence extends AppCompatActivity {
         //firebase connection
         //getting instance of the firebase
         mAuth = FirebaseAuth.getInstance();
-        myDB = FirebaseDatabase.getInstance().getReference().child("ClassFences").child( mAuth.getCurrentUser().getUid());
+        mydatabases = FirebaseDatabase.getInstance().getReference().child("ClassFences");
         sharedata.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,8 +58,8 @@ public class ShareFence extends AppCompatActivity {
 
     private void shareFenceData() {
         //this method helps you get data from both textView
-        // and EditText in the sharedata XML
-        String id=myDB.push().getKey();
+
+        String id=mydatabases.push().getKey();
         String latitude = passedLat.getText().toString().trim();
         String longitude = passedLong.getText().toString().trim();
         String unitname = unitName.getText().toString().trim();
@@ -78,13 +77,15 @@ public class ShareFence extends AppCompatActivity {
             return;
         }
 
-        //create an object that fetchs data from the fence model/ fenceData
-        FenceData fenceData = new FenceData(id,latitude,longitude,unitname,unitcode);
+        //create an object that fetchs data from the fence model/ fencesData
+        FencesData fencesData = new FencesData(id,latitude,longitude,unitname,unitcode);
         //now call the firebase object
-        myDB.child(id).setValue(fenceData).addOnSuccessListener(new OnSuccessListener<Void>() {
+        mydatabases.child(id).setValue(fencesData).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 Toast.makeText(getApplicationContext(), "fence shared successfully", Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
             }
 
         });

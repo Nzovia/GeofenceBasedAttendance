@@ -150,7 +150,7 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/lecCard3"
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="0dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             app:cardBackgroundColor="@color/card_Color"
@@ -184,7 +184,7 @@
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
-        <!--<androidx.cardview.widget.CardView
+        <androidx.cardview.widget.CardView
             android:id="@+id/lecCard4"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -205,22 +205,23 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_margin="16dp"
                 android:gravity="center">
+
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="96dp"
-                    android:src="@drawable/chats"
-                    android:layout_gravity="center_horizontal"/>
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/fencehistory" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Chats"
+                    android:text="@string/fence_history"
                     android:textSize="16sp"
                     android:textColor="#000000"
                     android:textStyle="bold" />
 
             </LinearLayout>
 
-        </androidx.cardview.widget.CardView>-->
+        </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
             android:id="@+id/lecCard5"
             android:layout_width="0dp"

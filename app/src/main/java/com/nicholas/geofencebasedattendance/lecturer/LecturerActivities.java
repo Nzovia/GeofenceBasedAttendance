@@ -106,6 +106,7 @@ public class LecturerActivities extends AppCompatActivity {
         //code for closing the dialog once the close button is clicked
         ImageButton imageButton=view.findViewById(R.id.closePost);
         imageButton.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 dialog.dismiss();

@@ -56,5 +56,7 @@
     <string name="enter_unit_code">Enter Unit Code</string>
     <string name="geofence_data">GeoFence Data</string>
     <string name="share_fence">Share Fence</string>
+    <string name="fence_history">Fence History</string>
+
 
 </resources>

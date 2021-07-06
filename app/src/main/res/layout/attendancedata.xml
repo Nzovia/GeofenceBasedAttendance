@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/attendbtn"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Student.AttendClass">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/attendance"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.027">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/latitudestud"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/aldrich"
+                android:text="Latitude: "
+                android:textColor="#56CC23"
+                app:layout_constraintBottom_toTopOf="@+id/studentNumber"
+                app:layout_constraintEnd_toStartOf="@+id/fetchedlat"
+                app:layout_constraintStart_toStartOf="@+id/studentNumber"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/longitudestud"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/aldrich"
+                android:text="Longitude: "
+                android:textColor="#56CC23"
+                app:layout_constraintBottom_toBottomOf="@+id/latitudestud"
+                app:layout_constraintEnd_toStartOf="@+id/fetchedlog"
+                app:layout_constraintStart_toEndOf="@+id/fetchedlat"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
+            <TextView
+                android:layout_width="match_parent"
+                android:background="#FFFFFF"
+                android:layout_height="2dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                app:layout_constraintBottom_toTopOf="@id/studentNumber"
+                />
+
+            <TextView
+                android:id="@+id/studentNumber"
+                android:layout_width="110dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/ruslan_display"
+                android:gravity="center_vertical"
+                android:text="UnitName:"
+                android:textColor="#56CC23"
+                app:layout_constraintBottom_toTopOf="@+id/realtime"
+                app:layout_constraintEnd_toStartOf="@+id/nameofunit"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/latitudestud" />
+
+            <TextView
+                android:id="@+id/nameofunit"
+                android:layout_width="212dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="28dp"
+                android:ems="10"
+                android:text=" "
+                app:layout_constraintBottom_toBottomOf="@+id/studentNumber"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/studentNumber"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <TextView
+                android:id="@+id/realtime"
+                android:layout_width="110dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="35dp"
+                android:fontFamily="@font/ruslan_display"
+                android:gravity="center_vertical"
+                android:text="UnitCode:"
+                android:textColor="#56CC23"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/studentNumber" />
+
+            <TextView
+                android:id="@+id/codeofunit"
+                android:layout_width="212dp"
+                android:layout_height="30dp"
+                android:ems="10"
+                android:text=" "
+                app:layout_constraintBottom_toBottomOf="@+id/realtime"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.272"
+                app:layout_constraintStart_toEndOf="@+id/realtime"
+                app:layout_constraintTop_toTopOf="@+id/realtime"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/buttonAttend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="10dp"
+                android:padding="5dp"
+                android:text="Attend"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.879"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/realtime" />
+
+            <TextView
+                android:id="@+id/fetchedlat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                app:layout_constraintBottom_toBottomOf="@+id/latitudestud"
+                app:layout_constraintEnd_toStartOf="@+id/longitudestud"
+                app:layout_constraintStart_toEndOf="@+id/latitudestud"
+                app:layout_constraintTop_toTopOf="@+id/latitudestud"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/fetchedlog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                app:layout_constraintBottom_toBottomOf="@+id/longitudestud"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/longitudestud"
+                app:layout_constraintTop_toTopOf="@+id/longitudestud" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
