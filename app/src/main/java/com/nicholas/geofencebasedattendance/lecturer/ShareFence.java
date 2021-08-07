@@ -16,7 +16,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.nicholas.geofencebasedattendance.R;
 
-public class ShareFence extends AppCompatActivity {
+public class   ShareFence extends AppCompatActivity {
     private TextView passedLat, passedLong;
     private EditText unitName, unitCode;
     private Button sharedata;

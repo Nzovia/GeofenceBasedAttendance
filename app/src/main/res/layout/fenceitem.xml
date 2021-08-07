@@ -4,16 +4,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="120dp"
     android:layout_marginHorizontal="10dp"
     android:layout_marginTop="10dp"
-    android:layout_marginBottom="20dp"
     android:scrollbars="vertical"
     app:cardCornerRadius="20dp">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
+        android:layout_width="330dp"
         android:layout_height="match_parent">
 
         <TextView
@@ -28,7 +27,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/latvalue"
+            android:id="@+id/latitudeValue"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -57,7 +56,7 @@
             android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/unitcreated"
-            app:layout_constraintTop_toBottomOf="@+id/latvalue" />
+            app:layout_constraintTop_toBottomOf="@+id/latitudeValue" />
 
         <TextView
             android:id="@+id/textView3"
@@ -105,7 +104,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="5dp"
-            android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -114,7 +112,23 @@
             app:layout_constraintTop_toBottomOf="@+id/unitcreated"
             app:layout_constraintVertical_bias="0.0" />
 
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="right"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/attenOrdelete"
+            android:layout_width="20dp"
+            android:layout_height="21dp"
+            android:layout_margin="10dp"
+            android:background="@android:color/transparent"
+            android:layout_alignParentBottom="true"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/attendordelete" />
+
+    </RelativeLayout>
 </androidx.cardview.widget.CardView>

@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -34,6 +35,12 @@ public class studentAdapter extends FirebaseRecyclerAdapter<studentItem, student
         requireNonNull(holder).name.setText(model.getName());
         holder.regisrationNumber.setText(model.getRegistrationNo());
         holder.email.setText(model.getEmail());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(v.getContext(),"registered students", Toast.LENGTH_LONG).show();
+            }
+        });
 
 
     }

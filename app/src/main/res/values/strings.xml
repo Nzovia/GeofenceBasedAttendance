@@ -57,6 +57,9 @@
     <string name="geofence_data">GeoFence Data</string>
     <string name="share_fence">Share Fence</string>
     <string name="fence_history">Fence History</string>
+    <string name="attend_class">attend class</string>
+    <string name="message">Message</string>
+    <string name="cancel">Cancel</string>
 
 
 </resources>

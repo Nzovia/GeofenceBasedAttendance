@@ -20,7 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.nicholas.geofencebasedattendance.LoginActivity;
 import com.nicholas.geofencebasedattendance.R;
 
-public class RegisterStudent extends AppCompatActivity {
+public class  RegisterStudent extends AppCompatActivity {
     private EditText nameEditText, registrationNoEditText, emailEditText, passwordEditText, confirmpasswordEditText;
     private Button register;
     private FirebaseAuth mAuth;
