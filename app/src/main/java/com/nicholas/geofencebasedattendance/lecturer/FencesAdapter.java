@@ -1,14 +1,14 @@
 package com.nicholas.geofencebasedattendance.lecturer;
-
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,8 +18,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.nicholas.geofencebasedattendance.R;
+
+import java.util.zip.Inflater;
 
 import static android.widget.Toast.LENGTH_LONG;
 
@@ -48,25 +51,33 @@ public class FencesAdapter extends FirebaseRecyclerAdapter<FencesData,FencesAdap
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new MaterialAlertDialogBuilder(v.getContext())
-                        .setTitle("Attend Class")
-                        .setIcon(R.drawable.ic_mark)
-                        //.setBackground(R.drawable.alertdialog)
-                        .setMessage("Make sure you attend class")
-                        .setPositiveButton("Okay", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                //do something here, this section calls the button
-                                // that is going to perform a specific action
-                                Toast.makeText(v.getContext(),"Attend Class Here", LENGTH_LONG).show();
-                            }
-                        })
-                        .setNegativeButton("Dismiss", null)
-                        .show();
-//                AlertDialog alertDialog = new AlertDialog.Builder(v.getContext()).create();
-//                alertDialog.setTitle("attend class");
-//                alertDialog.setMessage("make sure you attend class");
- //               alertDialog.show();
+                MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(v.getContext());
+                builder.setTitle("Attend Class");
+                builder.setIcon(R.drawable.ic_mark);
+                //builder.setView(R.drawable.view_background);
+                builder.setMessage("Make sure you attend class");
+                builder.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //do something here, this section calls the button
+                        // that is going to perform a specific action
+                        //here inflate the attendance layout
+//                        LayoutInflater inflater = (LayoutInflater) v.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//                        View layout = inflater.inflate(R.layout.authenticate_attendance,null);
+//                        inflater.getContext();
+
+
+
+
+                    }
+                });
+                builder.setNegativeButton("Dismiss", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                builder.show();
 
             }
         });
