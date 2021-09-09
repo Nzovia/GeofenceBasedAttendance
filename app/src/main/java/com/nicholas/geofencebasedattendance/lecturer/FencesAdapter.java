@@ -21,13 +21,14 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.nicholas.geofencebasedattendance.R;
+import com.nicholas.geofencebasedattendance.Student.EnterClassActivity;
 
 import java.util.zip.Inflater;
 
 import static android.widget.Toast.LENGTH_LONG;
+import static android.widget.Toast.makeText;
 
 public class FencesAdapter extends FirebaseRecyclerAdapter<FencesData,FencesAdapter.fencesViewHolder> {
-    private Context context;
     /**
      * Initialize a {@link RecyclerView.Adapter} Toast.makeText(activity, "clicked on " +position, Toast.LENGTH_SHORT).show();that listens to a Firebase query. See
      * {@link FirebaseRecyclerOptions} for configuration options.
@@ -36,13 +37,17 @@ public class FencesAdapter extends FirebaseRecyclerAdapter<FencesData,FencesAdap
      */
 
     //generate a constructor for the adapter
-    public FencesAdapter(@NonNull FirebaseRecyclerOptions<FencesData> options) {
+//    public FencesAdapter(Context mcontext,@NonNull FirebaseRecyclerOptions<FencesData> options) {
+//        super(options);
+//    }
+
+    public FencesAdapter(FirebaseRecyclerOptions<FencesData> options) {
         super(options);
     }
 
     //here implement all the adapter-viewHolder methods
     @Override
-    protected void onBindViewHolder(@NonNull fencesViewHolder holder, int position, @NonNull FencesData model) {
+    protected void onBindViewHolder( @NonNull fencesViewHolder holder, int position, @NonNull FencesData model) {
 
         holder.latitudecord.setText(model.getLatitude());
         holder.logititudecord.setText(model.getLogtitude());
@@ -51,6 +56,7 @@ public class FencesAdapter extends FirebaseRecyclerAdapter<FencesData,FencesAdap
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(v.getContext());
                 builder.setTitle("Attend Class");
                 builder.setIcon(R.drawable.ic_mark);
@@ -59,21 +65,24 @@ public class FencesAdapter extends FirebaseRecyclerAdapter<FencesData,FencesAdap
                 builder.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        //do something here, this section calls the button
-                        // that is going to perform a specific action
-                        //here inflate the attendance layout
+//                        do something here, this section calls the button
+//                         that is going to perform a specific action
+//                        here inflate the attendance layout
+
+                        Intent intent = new Intent(v.getContext(), EnterClassActivity.class);
+                        v.getContext().startActivity(intent);
+
+//                        Toast.makeText(v.getContext(), "you must attend class", LENGTH_LONG).show();
 //                        LayoutInflater inflater = (LayoutInflater) v.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 //                        View layout = inflater.inflate(R.layout.authenticate_attendance,null);
 //                        inflater.getContext();
-
-
-
 
                     }
                 });
                 builder.setNegativeButton("Dismiss", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(v.getContext(), "Sorry, to see you missing classes", LENGTH_LONG).show();
 
                     }
                 });

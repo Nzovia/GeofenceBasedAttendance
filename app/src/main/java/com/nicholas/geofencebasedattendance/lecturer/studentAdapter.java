@@ -1,5 +1,7 @@
 package com.nicholas.geofencebasedattendance.lecturer;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.nicholas.geofencebasedattendance.R;
+import com.nicholas.geofencebasedattendance.Student.EnterClassActivity;
 import com.nicholas.geofencebasedattendance.Student.studentItem;
 
 import java.util.Objects;
@@ -18,6 +21,7 @@ import java.util.Objects;
 import static java.util.Objects.*;
 
 public class studentAdapter extends FirebaseRecyclerAdapter<studentItem, studentAdapter.studentViewholder> {
+
 
 
     /**

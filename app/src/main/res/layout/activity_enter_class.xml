@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/hometext"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Student.EnterClassActivity">
+
+    <TextView
+        android:id="@+id/homelog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Enter your Correct details"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/realname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:textColor="@android:color/holo_green_dark"
+        android:hint="student name"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homelog" />
+
+    <EditText
+        android:id="@+id/adminnumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:textColor="@android:color/holo_green_dark"
+        android:hint="admin number"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/realname"
+        app:layout_constraintStart_toStartOf="@+id/realname"
+        app:layout_constraintTop_toBottomOf="@+id/realname" />
+
+    <EditText
+        android:id="@+id/realdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:textColor="@android:color/holo_green_dark"
+        android:hint="current Date"
+        android:inputType="date"
+        app:layout_constraintEnd_toEndOf="@+id/adminnumber"
+        app:layout_constraintStart_toStartOf="@+id/adminnumber"
+        app:layout_constraintTop_toBottomOf="@+id/adminnumber" />
+
+    <EditText
+        android:id="@+id/currentTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:textColor="@android:color/holo_green_dark"
+        android:hint="Realtime"
+        android:inputType="time"
+        app:layout_constraintEnd_toEndOf="@+id/realdate"
+        app:layout_constraintStart_toStartOf="@+id/realdate"
+        app:layout_constraintTop_toBottomOf="@+id/realdate" />
+
+    <Button
+        android:id="@+id/buttonattend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="8dp"
+        android:text="Attend Now"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/currentTime" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -60,6 +60,7 @@
     <string name="attend_class">attend class</string>
     <string name="message">Message</string>
     <string name="cancel">Cancel</string>
+    <string name="students_inattendance">Students InAttendance</string>
 
 
 </resources>

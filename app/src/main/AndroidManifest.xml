@@ -17,11 +17,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GeofenceBasedAttendance">
-        <activity android:name=".lecturer.FenceHistory"></activity>
+        <activity android:name=".Student.EnterClassActivity"></activity>
+        <activity android:name=".lecturer.FenceHistory" />
         <activity android:name=".lecturer.ShareFence" />
         <activity android:name=".lecturer.LecturerActivities" />
         <activity android:name=".Student.StudentActivities" />
-        <activity android:name=".Student.HistoryFences" />
         <activity android:name=".lecturer.LecturerLogin" />
         <activity android:name=".lecturer.RegisterLecturer" />
         <activity android:name=".lecturer.ChatsActivity" />
