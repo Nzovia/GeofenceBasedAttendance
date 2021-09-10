@@ -4,7 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -15,6 +18,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.nicholas.geofencebasedattendance.R;
+
+import java.util.zip.Inflater;
 
 public class   ShareFence extends AppCompatActivity {
     private TextView passedLat, passedLong;
@@ -83,9 +88,16 @@ public class   ShareFence extends AppCompatActivity {
         mydatabases.child(id).setValue(fencesData).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                Toast.makeText(getApplicationContext(), "fence shared successfully", Toast.LENGTH_SHORT).show();
+                LayoutInflater inflater =getLayoutInflater();
+                View view= inflater.inflate(R.layout.customtoast_fence, (ViewGroup) findViewById(R.id.customtoast) );
+                Toast toast = new Toast(getApplicationContext());
+                toast.setGravity(Gravity.CENTER,0,0);
+                toast.setDuration(Toast.LENGTH_LONG);
+                toast.setView(view);
+                toast.show();
                 Intent intent=new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
+                finish();
             }
 
         });
