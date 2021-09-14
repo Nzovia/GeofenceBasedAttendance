@@ -30,7 +30,7 @@ public class FenceHistory extends AppCompatActivity {
         history_recycler.setLayoutManager(new LinearLayoutManager(this));
         // calling a method to get data from
         // Firebase and set data to list view
-        mydatabases = FirebaseDatabase.getInstance().getReference("ClassFences");
+        mydatabases = FirebaseDatabase.getInstance().getReference().child("ClassFences");
 
 
         FirebaseRecyclerOptions<FencesData> options

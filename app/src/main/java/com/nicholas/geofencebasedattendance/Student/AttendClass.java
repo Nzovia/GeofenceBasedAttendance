@@ -56,4 +56,5 @@ public class AttendClass extends AppCompatActivity {
         super.onStop();
         fenceAdapter.stopListening();
     }
+
 }

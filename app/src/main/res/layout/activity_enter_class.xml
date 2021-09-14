@@ -80,4 +80,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/currentTime" />
 
+    <ImageButton
+        android:id="@+id/fingerAuth"
+        android:layout_width="90dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:layout_margin="15dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/ic_fingerprint"
+        android:fitsSystemWindows="true"
+        android:padding="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.693"
+        app:layout_constraintStart_toEndOf="@+id/buttonattend"
+        app:layout_constraintTop_toTopOf="@+id/buttonattend" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

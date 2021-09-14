@@ -54,6 +54,16 @@ public class FencesAdapter extends FirebaseRecyclerAdapter<FencesData,FencesAdap
         holder.logititudecord.setText(model.getLogtitude());
         holder.coursename.setText(model.getUnittitle());
         holder.coursecode.setText(model.getUnitcode());
+        holder.deletelecture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ////
+                ////continue here
+                onDataChanged();
+
+            }
+        });
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,6 +82,9 @@ public class FencesAdapter extends FirebaseRecyclerAdapter<FencesData,FencesAdap
 
                         Intent intent = new Intent(v.getContext(), EnterClassActivity.class);
                         v.getContext().startActivity(intent);
+
+//                        myDB.child(model.getId()).removeValue();
+//                        Toast.makeText(getApplicationContext(),"post deleted", Toast.LENGTH_LONG).show();
 
 //                        Toast.makeText(v.getContext(), "you must attend class", LENGTH_LONG).show();
 //                        LayoutInflater inflater = (LayoutInflater) v.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -107,7 +120,7 @@ public class FencesAdapter extends FirebaseRecyclerAdapter<FencesData,FencesAdap
 
     public static class fencesViewHolder extends RecyclerView.ViewHolder {
         TextView latitudecord, logititudecord, coursename, coursecode;
-        ImageButton attendlecture;
+        ImageButton deletelecture;
 
         public fencesViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -116,7 +129,7 @@ public class FencesAdapter extends FirebaseRecyclerAdapter<FencesData,FencesAdap
             logititudecord = itemView.findViewById(R.id.logititudevalue);
             coursename = itemView.findViewById(R.id.unitcreated);
             coursecode = itemView.findViewById(R.id.codecreated);
-            attendlecture = itemView.findViewById(R.id.attenOrdelete);
+            deletelecture = itemView.findViewById(R.id.attenOrdelete);
 
         }
     }
