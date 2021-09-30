@@ -1,11 +1,5 @@
 package com.nicholas.geofencebasedattendance.lecturer;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -15,6 +9,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -176,8 +176,6 @@ public class LecturerActivities extends AppCompatActivity {
         Button update = mview.findViewById(R.id.addPost);
         update.setText("UPDATE");
         ImageButton close=mview.findViewById(R.id.closePost);
-
-
 
         titlePost.setText(title);
         descriptionPost.setText(description);

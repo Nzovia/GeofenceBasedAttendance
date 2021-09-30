@@ -54,8 +54,8 @@
         android:id="@+id/timeText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/time"
-        android:inputType="time"
+        android:hint="@string/lec_name"
+        android:inputType="text"
         android:layout_margin="10dp"
         />
     <EditText

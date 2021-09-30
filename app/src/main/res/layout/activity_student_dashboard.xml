@@ -37,7 +37,7 @@
         android:id="@+id/studentname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/nicholas_nzovia_maundu"
+        android:text="@string/student_s_dashboard"
         android:textSize="20sp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@id/profile"

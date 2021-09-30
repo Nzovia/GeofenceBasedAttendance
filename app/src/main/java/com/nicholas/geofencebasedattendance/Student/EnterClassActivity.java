@@ -74,13 +74,34 @@ public class EnterClassActivity extends AppCompatActivity {
          attendClass.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
-                 Toast.makeText(getApplicationContext(), "Touch FingerPrint Sensor", Toast.LENGTH_SHORT).show();
+                 //add to database
+                 //get the texts input from the xml file
+
+                     // else call the method to add
+                     // data to our database.
+                     fingerPrint.setVisibility(View.VISIBLE);
+                     Toast.makeText(getApplicationContext(), "Touch FingerPrint Sensor", Toast.LENGTH_SHORT).show();
+
+
+             }
+         });
                  //finger print aunthentication
-                 fingerPrint.setVisibility(View.VISIBLE);
+
                  fingerPrint.setOnClickListener(new View.OnClickListener() {
                      @RequiresApi(api = Build.VERSION_CODES.P)
                      @Override
                      public void onClick(View v) {
+
+                         String id=databaseReference.push().getKey();
+                         String studentName = name.getText().toString();
+                         String studentAdminNumber = adminnumber.getText().toString();
+                         String attendancedate = realdate.getText().toString();
+                         String attendancetime = realtime.getText().toString();
+                         if (TextUtils.isEmpty(studentName) && TextUtils.isEmpty(studentAdminNumber) &&
+                                 TextUtils.isEmpty(attendancedate) && TextUtils.isEmpty(attendancetime )) {
+                             System.out.println("please fill all fields");
+
+                         }else{
                          executor = ContextCompat.getMainExecutor(EnterClassActivity.this);
                          prompt = new BiometricPrompt(EnterClassActivity.this, executor, new BiometricPrompt.AuthenticationCallback() {
                              @Override
@@ -92,13 +113,15 @@ public class EnterClassActivity extends AppCompatActivity {
 
                              @Override
                              public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
-
-
                                  super.onAuthenticationSucceeded(result);
+
+
+                                 addDatatoFirebase(id, studentName, studentAdminNumber, attendancedate, attendancetime);
                                 // status.setText("SUCCESS");
                                  Toast.makeText(getApplicationContext(),"successfully signed in" ,Toast.LENGTH_LONG).show();
-
-
+                                 Intent intent = new Intent(EnterClassActivity.this, StudentDashboard.class);
+                                 startActivity(intent);
+                                 //finish();
                              }
 
                              @Override
@@ -119,27 +142,10 @@ public class EnterClassActivity extends AppCompatActivity {
 
                                  prompt.authenticate(promptInfo);
 
-
-                                 //add to database
-                                 //get the texts input from the xml file
-                                 String id=databaseReference.push().getKey();
-                                 String studentName = name.getText().toString();
-                                 String studentAdminNumber = adminnumber.getText().toString();
-                                 String attendancedate = realdate.getText().toString();
-                                 String attendancetime = realtime.getText().toString();
-
-                                 if (TextUtils.isEmpty(studentName) && TextUtils.isEmpty(studentAdminNumber) &&
-                                         TextUtils.isEmpty(attendancedate) && TextUtils.isEmpty(attendancetime )) {
-                                     System.out.println("please fill all fields");
-                                 }else{
-                                     // else call the method to add
-                                     // data to our database.
-                                     addDatatoFirebase(id, studentName, studentAdminNumber, attendancedate, attendancetime);
-                                 }
                              }
                          });
 
-                     }
+                     }}
 
                      private void addDatatoFirebase(String id, String studentName, String studentAdminNumber,
                                                     String attendancedate, String attendancetime) {
@@ -159,34 +165,6 @@ public class EnterClassActivity extends AppCompatActivity {
                          });
                              }
                          });
-
-                     }
-                 });
-
-
-
-//        databaseReference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                // inside the method of on Data change we are setting
-//                // our object class to our database reference.
-//                // data base reference will sends data to firebase.
-//                databaseReference.setValue(objAttendance);
-//
-//                // after adding this data we are showing toast message.
-//                Toast.makeText(EnterClassActivity.this, "attendance Successful", Toast.LENGTH_SHORT).show();
-//            }
-//
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//            // if the data is not added or it is cancelled then
-//            // we are displaying a failure toast message.
-//            Toast.makeText(EnterClassActivity.this, "Attendance Failed " + error, Toast.LENGTH_SHORT).show();
-//
-//
-//        }
-//        });
 
 }
 }

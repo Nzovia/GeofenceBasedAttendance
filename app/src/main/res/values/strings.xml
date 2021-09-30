@@ -61,6 +61,8 @@
     <string name="message">Message</string>
     <string name="cancel">Cancel</string>
     <string name="students_inattendance">Students InAttendance</string>
+    <string name="lec_name">Name</string>
+    <string name="student_s_dashboard">Student\'s DashBoard</string>
 
 
 </resources>
